@@ -1,0 +1,33 @@
+<article class="container container-fluid">
+  <section class="create" *ngIf="!isCreate">
+    <form>
+   
+   <div>
+    <h1 class="shadow">Tamagotchi - Kyaw Htay</h1>
+    <p>Add some tamagotchis and try to keep them alive by using the Feed, Play, Pet and Rest buttons.</p>
+   </div>
+    <div class="row">
+      <div class="offset-md-5 col-md-2">
+        
+        <div class="form-group">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" [(ngModel)]="name">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="onCreate()">Create Dragon </button>
+      </div>
+    </div>
+    </form>
+    
+  </section>
+  <section class="create" *ngIf="isCreate">
+   <table mat-table >
+    <tr >
+        <td>
+          <app-petclient [pets]='pets'></app-petclient> 
+         
+      </td>
+    
+  </tr>
+  </table>
+  </section>
+</article>
+

@@ -1,0 +1,33 @@
+<p>Dragon is born</p>
+
+
+<section>
+    <form>
+   
+   <div>
+
+    <p>Add some tamagotchis and try to keep them alive by using the Feed, Play, Pet and Rest buttons.</p>
+   </div>
+    <div class="row">
+      <div class="offset-md-5 col-md-2">
+        
+        <div class="form-group">
+            <img src="./assets/images/tamagotchi.gif" />
+            
+           Name:  {{pets.name}} |  Happiness: {{pets.attention}} %| Energy:  {{pets.rest}}%
+         
+        </div>
+        <div>
+            <button type="button" class="btn btn-primary" (click)="onFeed()">Feed </button>
+        </div>
+        <div>
+          <button type="button" class="btn btn-primary" (click)="onPlay()" >Play </button>
+       </div>
+       <div>
+        <button type="button" class="btn btn-primary" (click)="onKill()" >Kill </button>
+     </div>
+      </div>
+    </div>
+    </form>
+    <app-status></app-status>
+  </section>
