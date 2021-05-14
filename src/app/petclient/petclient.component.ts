@@ -10,7 +10,7 @@ import { IPets } from '../_interfaces/pet.model';
 })
 export class PetclientComponent implements OnInit {
   @Input() pets: IPets;
- 
+  @Output() public OnReturnToCreate = new EventEmitter();
    id:number;
    pet: IPets | undefined;
    errorMessage = '';
@@ -26,12 +26,24 @@ export class PetclientComponent implements OnInit {
   public checkDecay=(event:boolean)=>{
     this.isLive=event;
     console.log(event);
+   
 
   }
   onFeed =()=>{
     this.httpget(this.url+'/api/Tamagotchi/addfood/1');
-  
   }
+ 
+  onBury=()=>{
+    this.http.post(this.url+'/api/Tamagotchi/bury/',this.id)
+    .subscribe(data => {
+      console.log(data);
+      },error=>{
+        console.log(error);
+      }
+    );
+    this.OnReturnToCreate.emit(false);
+  }
+  
   //  onFeed =()=>{
   //   this.petService.getPet(this.id).subscribe({
   //     next: pet => this.pet = pet,

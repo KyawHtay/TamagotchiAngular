@@ -40,7 +40,7 @@ export class StatusComponent implements OnInit {
     });
   }
 
-  runPetDecay=()=>{
+  runPetDecay=()=>{ 
     this.http.get('https://localhost:44322/api/Tamagotchi/decay')
     .subscribe(data => {
       console.log(data);

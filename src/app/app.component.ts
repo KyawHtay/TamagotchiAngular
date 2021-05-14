@@ -22,8 +22,8 @@ export class AppComponent implements OnInit{
   
   public pets: IPets[] = [];
 
-  public returnToCreate = () => {
-    this.isCreate = false;
+  public returnToCreate = (event:boolean) => {
+    this.isCreate = event;
   
   }
  
