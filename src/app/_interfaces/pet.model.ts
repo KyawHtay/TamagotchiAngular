@@ -3,9 +3,9 @@ export interface IPets {
     name: string,
     exp:string,
     level: string,
-    nextlevel: string,
-    food: string,
-    attention: string,
-    rest: string
+    nextlevel: number,
+    food: number,
+    attention: number,
+    rest: number
 
 }

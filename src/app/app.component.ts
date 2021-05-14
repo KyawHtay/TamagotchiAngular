@@ -26,6 +26,11 @@ export class AppComponent implements OnInit{
     this.isCreate = false;
   
   }
+  public checkDecay=(event:boolean)=>{
+    this.isCreate=event;
+    console.log(event);
+
+  }
   public onCreate =()=>{
     console.log("Name: "+ this.name);
     

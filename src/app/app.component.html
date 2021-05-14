@@ -23,6 +23,7 @@
     <tr >
         <td>
           <app-petclient [pets]='pets'></app-petclient>   
+          <app-status (onCheckDecay)="checkDecay($evenyt)"></app-status>
       </td>
     
   </tr>

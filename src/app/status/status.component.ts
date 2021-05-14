@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { interval } from 'rxjs';
 import { PetService } from '../pet.service';
 import { IPets } from '../_interfaces/pet.model';
@@ -14,19 +14,22 @@ export class StatusComponent implements OnInit {
  
   public pets: IPets[]=[];
   pet:IPets;
-  public name:string='';
-  public attention:string='';
-  public rest:string='';
+  name:string='';
+  attention:number;
+  rest:number;
   errorMessage = '';
   id:number;
+  public isDead: boolean=false;
   
+  @Output() public onCheckDecay = new EventEmitter();
   constructor(private http: HttpClient,private petService:PetService)
   {
+    this.isDead=false;
     this.id=1
     
   }
   ngOnInit(): void {
-    interval(9000).subscribe(x => this.getMyPet()); 
+    interval(3000).subscribe(x => this.getMyPet()); 
   }
 
   getPet(id: number): void {
@@ -46,12 +49,17 @@ export class StatusComponent implements OnInit {
       }
     );
   }
+
+ 
    getMyPet = () => {
     this.http.get<IPets>('https://localhost:44322/api/Tamagotchi/displaypet/1')
     .subscribe(res => {
       this.pet = res as IPets;
       this.runPetDecay();
-
+      if(this.pet.food<=0){ this.isDead =true; 
+        this.onCheckDecay.emit(true);
+        console.log(this.isDead);
+      }
     },error=>{
       console.log(error);
     });
