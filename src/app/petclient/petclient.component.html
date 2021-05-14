@@ -14,7 +14,7 @@
         <div class="form-group">
             <img src="./assets/images/tamagotchi.gif" />
             
-           Name:  {{pets.name}} |  Happiness: {{pets.attention}} %| Energy:  {{pets.rest}}%
+           Name:  {{pets.name}} 
          
         </div>
         <div>
@@ -24,8 +24,9 @@
           <button type="button" class="btn btn-primary" (click)="onPlay()" >Play </button>
        </div>
        <div>
-        <button type="button" class="btn btn-primary" (click)="onKill()" >Kill </button>
-     </div>
+        <button type="button" class="btn btn-primary" (click)="onRest()" >Rest </button>
+      </div>
+      
       </div>
     </div>
     </form>

@@ -26,7 +26,7 @@ export class StatusComponent implements OnInit {
     
   }
   ngOnInit(): void {
-    interval(9000).subscribe(x => this.getPets()); 
+    interval(9000).subscribe(x => this.getMyPet()); 
   }
 
   getPet(id: number): void {
@@ -46,7 +46,7 @@ export class StatusComponent implements OnInit {
       }
     );
   }
-   getPets = () => {
+   getMyPet = () => {
     this.http.get<IPets>('https://localhost:44322/api/Tamagotchi/displaypet/1')
     .subscribe(res => {
       this.pet = res as IPets;
