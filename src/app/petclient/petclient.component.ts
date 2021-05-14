@@ -10,13 +10,11 @@ import { IPets } from '../_interfaces/pet.model';
 })
 export class PetclientComponent implements OnInit {
   @Input() pets: IPets;
-   name:string='';
-   attention:string='';
-   food:string='';
-   rest:string='';
+ 
    id:number;
    pet: IPets | undefined;
    errorMessage = '';
+   isLive:boolean =true;
    url ='https://localhost:44322';
 
  
@@ -25,7 +23,11 @@ export class PetclientComponent implements OnInit {
   ngOnInit(): void {
     this.id=1;
   }
+  public checkDecay=(event:boolean)=>{
+    this.isLive=event;
+    console.log(event);
 
+  }
   onFeed =()=>{
     this.httpget(this.url+'/api/Tamagotchi/addfood/1');
   

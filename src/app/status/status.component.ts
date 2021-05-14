@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit {
       this.pet = res as IPets;
       this.runPetDecay();
       if(this.pet.food<=0){ this.isDead =true; 
-        this.onCheckDecay.emit(true);
+        this.onCheckDecay.emit(!this.isDead);
         console.log(this.isDead);
       }
     },error=>{

@@ -11,24 +11,28 @@
     <div class="row">
       <div class="offset-md-5 col-md-2">
         
-        <div class="form-group">
+        <div class="form-group" *ngIf="isLive">
             <img src="./assets/images/tamagotchi.gif" />
             
            Name:  {{pets.name}} 
+           <button type="button" class="btn btn-primary" (click)="onFeed()">Feed </button>
+      
+           <button type="button" class="btn btn-primary" (click)="onPlay()" >Play </button>
+      
+           <button type="button" class="btn btn-primary" (click)="onRest()" >Rest </button>
          
         </div>
-        <div>
-            <button type="button" class="btn btn-primary" (click)="onFeed()">Feed </button>
+        <div class="form-group" *ngIf="!isLive">
+          <img src="./assets/images/skull.gif" />
+          
+             Name:  {{pets.name}} 
+       
+             <button type="button" class="btn btn-primary"  >Bury </button>
+
         </div>
-        <div>
-          <button type="button" class="btn btn-primary" (click)="onPlay()" >Play </button>
-       </div>
-       <div>
-        <button type="button" class="btn btn-primary" (click)="onRest()" >Rest </button>
-      </div>
       
       </div>
     </div>
     </form>
-  
+    <app-status (onCheckDecay)="checkDecay($event)"></app-status>
   </section>
