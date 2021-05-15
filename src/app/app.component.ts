@@ -27,7 +27,7 @@ export class AppComponent implements OnInit{
 
   public returnToCreate = (event:boolean) => {
     this.isCreate = event;
-    this.name="Thank you for playing";
+    this.name="Thank you for playing!!!";
     this.isDead=true;
   
   }
