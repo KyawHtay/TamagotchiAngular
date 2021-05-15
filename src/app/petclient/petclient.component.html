@@ -1,38 +1,30 @@
 <p>Dragon is born</p>
 
-
 <section>
     <form>
-   
    <div>
-
     <p>Add some tamagotchis and try to keep them alive by using the Feed, Play, Pet and Rest buttons.</p>
+    <div class="shadow">Name:  {{pets.name}} </div>
    </div>
-    <div class="row">
-      <div class="offset-md-5 col-md-2">
-        
-        <div class="form-group" *ngIf="isLive">
-            <img src="./assets/images/tamagotchi.gif" />
-            
-           Name:  {{pets.name}} 
+    <div class="row" *ngIf="isLive">
+      <img src="./assets/images/tamagotchi.gif" class="pet-image" />
+      <div class="offset-md-5 col-md-2">        
+        <div class="form-group" >
            <button type="button" class="btn btn-primary" (click)="onFeed()">Feed </button>
-      
            <button type="button" class="btn btn-primary" (click)="onPlay()" >Play </button>
-      
-           <button type="button" class="btn btn-primary" (click)="onRest()" >Rest </button>
-         
+           <button type="button" class="btn btn-primary" (click)="onRest()" >Rest </button>         
         </div>
-        <div class="form-group" *ngIf="!isLive">
-          <img src="./assets/images/skull.gif" />
-          
-             Name:  {{pets.name}} 
-       
-             <button type="button" class="btn btn-primary" (click)="onBury()">Bury </button>
-
-        </div>
-      
       </div>
     </div>
+      <div class="row" *ngIf="!isLive">
+        <img src="./assets/images/skull.gif"  class="pet-image"/> 
+        <div class="offset-md-5 col-md-2">
+          <div class="form-group" > 
+            <button type="button" class="btn btn-primary" (click)="onBury()">Bury </button>
+         </div> 
+         </div>
+      </div>
+    
     </form>
     <app-status (onCheckDecay)="checkDecay($event)"></app-status>
   </section>
